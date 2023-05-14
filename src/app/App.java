@@ -6,7 +6,7 @@ public class App {
     
     
     public static void Menu() {
-        System.out.println("===================** A Computaria **====================");
+        System.out.println( "\r ===================** A Computaria **====================");
         String[] options = { "ADICIONAR", "DELETAR", "ATUALIZAR", "PESQUISAR", "CRIAR TABELAS" };
         
         for (int i = 1; i <= 5; i++) {
@@ -16,8 +16,8 @@ public class App {
         }
     }
     
-    public static void main(String[] args) throws Exception { 
-        Conexao conexao = new Conexao();
-        Menu();
-     }
+    public static void main(String[] arg) throws Exception {
+        Conexao conn = new Conexao();
+        conn.main(arg);
+    } 
 }
