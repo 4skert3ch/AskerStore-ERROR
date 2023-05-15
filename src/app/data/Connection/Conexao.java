@@ -53,7 +53,6 @@ public class Conexao {
         try {
             int max = 22;
             _querys.CriarTabelas(conn);
-            _querys.Consultas(conn);
             System.out.println("Criando tabelas do sistema...");
             for (int i = 0; i <= max; i++) {
                 Thread.sleep(100);
