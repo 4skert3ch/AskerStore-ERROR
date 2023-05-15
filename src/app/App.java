@@ -2,7 +2,7 @@ package app;
 
 import java.util.Scanner;
 
-import app.data.Connection.Conexao;
+import app.Database.Connection.Conexao;
 
 public class App {
     

@@ -1,4 +1,5 @@
-package app.data;
+package app.Database;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,7 +10,7 @@ public class Querys {
      * @return
      * @throws SQLException
      */
-    public static Statement CriarTabelas(Connection conn ) throws SQLException {
+    public static Statement CriarTabelas(Connection conn) throws SQLException {
         Statement stmt = conn.createStatement();
 
         String sql;
@@ -21,14 +22,14 @@ public class Querys {
         return stmt;
     }
 
-    //public static Statement Consultas(Connection conn ) throws SQLException {
-    //     Statement stmt = conn.createStatement();
+    // public static Statement Consultas(Connection conn ) throws SQLException {
+    // Statement stmt = conn.createStatement();
 
-    //     String sql;
-    //     sql = "SELECT * FROM clientes";
-    //     stmt.executeUpdate(sql);
+    // String sql;
+    // sql = "SELECT * FROM clientes";
+    // stmt.executeUpdate(sql);
 
-    //     return stmt;
+    // return stmt;
     // }
-    
+
 }
