@@ -15,6 +15,10 @@ public class Querys {
         Statement stmt = conn.createStatement();
         String sql;
         
+        sql = "CREATE TABLE clientes7 (id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(50) NOT NULL, idade INT NOT NULL, PRIMARY KEY (id))";
+        stmt.executeUpdate(sql);
+        sql = "CREATE TABLE clientes6 (id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(50) NOT NULL, idade INT NOT NULL, PRIMARY KEY (id))";
+        stmt.executeUpdate(sql);
         sql = "CREATE TABLE clientes5 (id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(50) NOT NULL, idade INT NOT NULL, PRIMARY KEY (id))";
         stmt.executeUpdate(sql);
         sql = "CREATE TABLE clientes4 (id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(50) NOT NULL, idade INT NOT NULL, PRIMARY KEY (id))";
