@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 import app.App;
+import app.Views.Menus;
 import app.data.Querys;
 import javafx.scene.control.ProgressBar;
 
@@ -48,22 +49,21 @@ public class Conexao {
 
     public static Statement StatementsQuerys(Connection conn) throws SQLException, InterruptedException {
         Querys _querys = new Querys();
-        App app = new App();
+        Menus menu = new Menus();
         Statement stmt = conn.createStatement();
         try {
             int max = 22;
             _querys.CriarTabelas(conn);
-            _querys.Consultas(conn);
             System.out.println("Criando tabelas do sistema...");
             for (int i = 0; i <= max; i++) {
                 Thread.sleep(100);
                 System.out.print(String.format("\r%s", progressBar(i, max)));
             }
-            app.Menu();
+            menu.MenuInicial();
             System.out.println("\nSucesso tabelas criadas");
         } catch (SQLSyntaxErrorException e) {
             System.out.println(" - Tabelas [OK]");
-            app.Menu();
+            menu.MenuInicial();
         }
         return stmt;
     }
