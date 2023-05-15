@@ -1,4 +1,4 @@
-package app.data.Connection;
+package app.Database.Connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,7 @@ import java.sql.SQLSyntaxErrorException;
 import java.sql.Statement;
 
 import app.Views.Menus;
-import app.data.Querys;
+import app.Database.Querys;
 
 public class Conexao {
 
