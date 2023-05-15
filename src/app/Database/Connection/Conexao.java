@@ -5,15 +5,20 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.sql.*;
 
 import app.Views.Menus;
 import app.Database.Querys;
 
 public class Conexao {
-
+    public static Connection conexao = null;
+    public static Querys _querys = null;
+    static String url = "jdbc:mysql://localhost:3306/askerdata";
+     
     public static void main(String[] args) throws InterruptedException {
-        Querys _querys = new Querys();
-        Connection conexao = null;
+        _querys = new Querys();
+        
         try {
             // Carrega o driver JDBC
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -45,7 +50,7 @@ public class Conexao {
     }
 
     public static Statement StatementsQuerys(Connection conn) throws SQLException, InterruptedException {
-        Querys _querys = new Querys();
+         _querys = new Querys();
         Menus menu = new Menus();
         Statement stmt = conn.createStatement();
         try {
@@ -65,6 +70,17 @@ public class Conexao {
         return stmt;
     }
 
+    public static void mostrarCliente() throws SQLException {
+        try {
+        conexao = DriverManager.getConnection(url);
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+     ArrayList<String> cliente = _querys.Consultas(conexao);
+     System.out.println("teste");
+     System.out.println(cliente.get(0));
+    }
 
     public static String progressBar(int currentValue, int maxValue) {
         int progressBarLength = 33; //

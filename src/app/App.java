@@ -14,7 +14,7 @@ public class App {
         String escolha = scan.nextLine();
 
         if(escolha == "1"){
-            //Menu Clientes
+            conn.mostrarCliente();
         }
         if(escolha == "2"){
             //Menu Produtos

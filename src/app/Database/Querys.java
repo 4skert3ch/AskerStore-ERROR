@@ -33,7 +33,7 @@ public class Querys {
         return stmt;
     }
 
-    public static ArrayList<String> Consultas(Connection conn ) throws SQLException {
+    public ArrayList<String> Consultas(Connection conn ) throws SQLException {
        
         ArrayList<String> cliente = new ArrayList<String>();
 
