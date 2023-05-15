@@ -16,8 +16,6 @@ public class Menus {
         }
     }
 
-    //
-    
     public static void MenuClientes() {
         System.out.println( "\r =================** Menu Clientes **================== \r\n");
 
