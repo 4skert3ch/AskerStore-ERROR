@@ -3,7 +3,6 @@ package app;
 import java.util.Scanner;
 
 import app.Database.Connection.Conexao;
-import app.Views.Menus;
 
 public class App {
     
