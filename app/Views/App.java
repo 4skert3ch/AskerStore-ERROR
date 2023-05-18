@@ -1,8 +1,7 @@
-package app;
+package Views;
 import java.util.Scanner;
-import app.Database.Connection.Conexao;
-import app.Helpers.HMenus;
-import app.Views.Menus;
+import Database.Connection.Conexao;
+import Helpers.HMenus;
 
 public class App {
     public static void main(String[] arg) throws Exception {

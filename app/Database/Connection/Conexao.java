@@ -1,4 +1,4 @@
-package app.Database.Connection;
+package Database.Connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,14 +6,13 @@ import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
 import java.sql.Statement;
 
-import app.Views.Menus;
-import app.Database.Querys;
-import app.Helpers.HMenus;
+import Views.Menus;
+import Database.Creates;
+import Helpers.HMenus;
 
 public class Conexao {
 
     public static void main(String[] args) throws InterruptedException {
-        Querys _querys = new Querys();
         Connection conexao = null;
         try {
             // Carrega o driver JDBC
@@ -25,7 +24,7 @@ public class Conexao {
             String senha = "";
 
             conexao = DriverManager.getConnection(url, usuario, senha);
-            StatementsQuerys(conexao);          
+            StatementsQuerys(conexao);
 
         } catch (ClassNotFoundException e) {
             System.out.println("Não foi possível carregar o driver JDBC");
@@ -46,7 +45,7 @@ public class Conexao {
     }
 
     public static Statement StatementsQuerys(Connection conn) throws SQLException, InterruptedException {
-        Querys _querys = new Querys();
+        Creates _querys = new Creates();
         HMenus hmenus = new HMenus();
         Menus menu = new Menus();
         Statement stmt = conn.createStatement();
@@ -64,6 +63,26 @@ public class Conexao {
             System.out.println(" - Tabelas [OK]");
             menu.MenuPrincipal();
         }
+        return stmt;
+    }
+
+    public static Statement Cadastrar(Connection conn) throws SQLException {
+        Statement stmt = conn.createStatement();
+        return stmt;
+    }
+
+    public static Statement Atualizar(Connection conn) throws SQLException {
+        Statement stmt = conn.createStatement();
+        return stmt;
+    }
+
+    public static Statement Excluir(Connection conn) throws SQLException {
+        Statement stmt = conn.createStatement();
+        return stmt;
+    }
+
+    public static Statement Exibir(Connection conn) throws SQLException {
+        Statement stmt = conn.createStatement();
         return stmt;
     }
 

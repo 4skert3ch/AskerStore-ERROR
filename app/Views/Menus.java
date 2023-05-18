@@ -1,9 +1,7 @@
-package app.Views;
+package Views;
 
 import java.util.Scanner;
-
-import app.App;
-import app.Helpers.HMenus;
+import Helpers.HMenus;
 
 public class Menus {
     
@@ -24,7 +22,7 @@ public class Menus {
     }
     
     public static void MenuClientes() throws Exception {
-        HMenus hmenus = new HMenus();
+        Helpers.HMenus hmenus = new HMenus();
         Scanner scan = new Scanner(System.in);
         App app = new App();
 

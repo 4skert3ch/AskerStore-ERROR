@@ -1,4 +1,4 @@
-package app.Helpers;
+package Helpers;
 
 public class HMenus {
     public static void LimparConsole(){
