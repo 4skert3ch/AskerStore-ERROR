@@ -11,14 +11,13 @@ public class App {
         conn.main(arg);
 
         Scanner scan = new Scanner(System.in);
-        String escolha = scan.nextLine();
+        int escolha = scan.nextInt();
 
-        if(escolha == "1"){
+        if(escolha == 1){
+            System.out.println("teste");
             conn.mostrarCliente();
         }
-        if(escolha == "2"){
-            //Menu Produtos
-        }
+ 
 
     }
 }

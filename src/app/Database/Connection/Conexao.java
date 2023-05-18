@@ -15,10 +15,10 @@ public class Conexao {
     public static Connection conexao = null;
     public static Querys _querys = null;
     static String url = "jdbc:mysql://localhost:3306/askerdata";
-     
+
     public static void main(String[] args) throws InterruptedException {
         _querys = new Querys();
-        
+
         try {
             // Carrega o driver JDBC
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -29,7 +29,7 @@ public class Conexao {
             String senha = "";
 
             conexao = DriverManager.getConnection(url, usuario, senha);
-            StatementsQuerys(conexao);          
+            StatementsQuerys(conexao);
 
         } catch (ClassNotFoundException e) {
             System.out.println("Não foi possível carregar o driver JDBC");
@@ -50,7 +50,7 @@ public class Conexao {
     }
 
     public static Statement StatementsQuerys(Connection conn) throws SQLException, InterruptedException {
-         _querys = new Querys();
+        _querys = new Querys();
         Menus menu = new Menus();
         Statement stmt = conn.createStatement();
         try {
@@ -71,16 +71,20 @@ public class Conexao {
     }
 
     public static void mostrarCliente() throws SQLException {
-        try {
-        conexao = DriverManager.getConnection(url);
-            
-        } catch (Exception e) {
-            // TODO: handle exception
+        String url = "jdbc:mysql://localhost:3306/askerdata";
+        String usuario = "root";
+        String senha = "";
+        conexao = DriverManager.getConnection(url, usuario, senha);
+        ArrayList<String> cliente = _querys.Consultas(conexao);
+
+        for (int i = 0; i < cliente.size(); i++) {
+            System.out.println(cliente.get(i));
         }
-     ArrayList<String> cliente = _querys.Consultas(conexao);
-     System.out.println("teste");
-     System.out.println(cliente.get(0));
+        
+
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static String progressBar(int currentValue, int maxValue) {
         int progressBarLength = 33; //
