@@ -9,6 +9,7 @@ public class Menus {
 
         String[] options = { "Clientes", "Produto"};
         
+        
        
         int i = 0;
             for (String item : options) {
@@ -16,5 +17,17 @@ public class Menus {
                 i++;
             }
        
+    }
+
+
+    public static void MenuCliente(){
+        
+        String[] options = { "Adicionar", "Atualizar", "Deletar", "Consultar"};
+
+        int i = 0;
+        for (String item : options) {
+            System.out.println("[" + (i+1) + "] " + item); 
+            i++;
+        }
     }
 }

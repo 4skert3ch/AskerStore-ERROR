@@ -70,6 +70,15 @@ public class Conexao {
         return stmt;
     }
 
+    public static void printaSelect(ArrayList<String> select){
+        int tamanho = ((select.size()) / 7);
+        System.out.println(tamanho);
+
+        for (int i = 0; i < select.size(); i++) {
+            
+        }
+    }
+
     public static void mostrarCliente() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/askerdata";
         String usuario = "root";
@@ -77,9 +86,11 @@ public class Conexao {
         conexao = DriverManager.getConnection(url, usuario, senha);
         ArrayList<String> cliente = _querys.Consultas(conexao);
 
-        for (int i = 0; i < cliente.size(); i++) {
+
+        printaSelect(cliente);
+       /*  for (int i = 0; i < cliente.size(); i++) {
             System.out.println(cliente.get(i));
-        }
+        }*/
         
 
     }

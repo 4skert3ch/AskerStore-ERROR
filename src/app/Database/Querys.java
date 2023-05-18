@@ -40,7 +40,6 @@ public class Querys {
         try {
             PreparedStatement pstm = conn.prepareStatement("select id, nome, email, cpf, telefone, endereco, datadeNascimento from clientes;");
             ResultSet rs = null;
-    System.out.println("Método consulta");
             rs = pstm.executeQuery();
             while (rs.next()) {
                 cliente.add(rs.getString("id"));
