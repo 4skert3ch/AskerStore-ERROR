@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 import app.Views.Menus;
 import app.Database.Querys;
+import app.Helpers.HCliente;
+import app.Helpers.HMenus;
+import app.Helpers.HProduto;
 
 
 public class Conexao {
