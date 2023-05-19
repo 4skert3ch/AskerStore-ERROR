@@ -20,7 +20,7 @@ public class App {
             int crudCliente = scan.nextInt();
 
                 if (crudCliente == 1){
-
+                    conn.inserirCliente();
                 } else if (crudCliente == 2){
 
                 } else if (crudCliente == 3){

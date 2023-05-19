@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.sql.*;
 
 import app.Views.Menus;
@@ -14,6 +15,7 @@ import app.Database.Querys;
 public class Conexao {
     public static Connection conexao = null;
     public static Querys _querys = null;
+    public static Statement stmt = null;
     static String url = "jdbc:mysql://localhost:3306/askerdata";
 
     public static void main(String[] args) throws InterruptedException {
@@ -72,11 +74,10 @@ public class Conexao {
 
     public static void printaSelect(ArrayList<String> select){
         int tamanho = ((select.size()) / 7);
-        System.out.println(tamanho);
+        
 
-        for (int i = 0; i < select.size(); i++) {
-            
-        }
+
+       
     }
 
     public static void mostrarCliente() throws SQLException {
@@ -88,12 +89,39 @@ public class Conexao {
 
 
         printaSelect(cliente);
-       /*  for (int i = 0; i < cliente.size(); i++) {
+         for (int i = 0; i < cliente.size(); i++) {
             System.out.println(cliente.get(i));
-        }*/
+        }
         
 
     }
+
+    public static void inserirCliente() throws SQLException {
+        Scanner entrada = new Scanner(System.in);
+        String url = "jdbc:mysql://localhost:3306/askerdata";
+        String usuario = "root";
+        String senha = "";
+        conexao = DriverManager.getConnection(url, usuario, senha);
+        conexao.createStatement();
+        stmt = conexao.createStatement();
+
+            System.out.println("Nome do cliente");
+            String nome = entrada.next();
+            System.out.println("Email do cliente");
+            String email = entrada.next();
+            System.out.println("CPF do cliente");
+            String cpf = entrada.next();
+            System.out.println("Telefone do cliente?");
+            String telefone = entrada.next();
+            System.out.println("Endereço do cliente?");
+            String endereco = entrada.next();
+            System.out.println("Data de nascimento | xxxx-xx-xx");
+            String dtNascimento = entrada.next();
+
+        String sql = "insert into clientes(nome, email, cpf, telefone, endereco, datadenascimento) values ('"+nome+"', '"+email+"', '"+cpf+"', '"+telefone+"', '"+endereco+"', '"+dtNascimento+"')";
+        stmt.executeUpdate(sql);
+        
+    } 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
