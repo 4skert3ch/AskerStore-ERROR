@@ -23,13 +23,7 @@ public class Querys {
             "telefone varchar(20),"+
             "endereco varchar(20),"+
             "DataDeNascimento date);";
-            try {
-                stmt.executeUpdate(sql);
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-        
-
+            stmt.executeUpdate(sql);    
         return stmt;
     }
 

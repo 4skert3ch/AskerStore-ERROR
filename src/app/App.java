@@ -20,15 +20,14 @@ public class App {
             menu.MenuCliente();
             int crudCliente = scan.nextInt();
                 if (crudCliente == 1){
-                } else if (crudCliente == 2){
-                } else if (crudCliente == 3){
-                } else if (crudCliente == 4){
+                }else if (crudCliente == 2){
+                }else if (crudCliente == 3){
+                }else if (crudCliente == 4){
                 }else if (crudCliente == 5){
                     conn.Exibir(crudCliente, hcliente.getClass());
                 }else{
                     System.out.println("Essa opção não existe!");
                 }
-            
         }
 
     }
