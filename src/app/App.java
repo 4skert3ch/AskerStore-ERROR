@@ -1,7 +1,7 @@
 package app;
 import java.util.Scanner;
 import app.Database.Connection.Conexao;
-import app.Helpers.HMenus;
+
 import app.Views.Menus;
 
 public class App {
@@ -13,13 +13,24 @@ public class App {
         conn.main(arg);
 
         Scanner scan = new Scanner(System.in);
-        String escolha = scan.nextLine();
+        int escolha = scan.nextInt();
 
-        if(escolha != "1"){      
-            menu.MenuClientes();    
-        }
-        if(escolha != "2"){
-            //Menu Produtos
+        if(escolha == 1){
+            menu.MenuCliente();
+            int crudCliente = scan.nextInt();
+
+                if (crudCliente == 1){
+
+                } else if (crudCliente == 2){
+
+                } else if (crudCliente == 3){
+
+                } else if (crudCliente == 4){
+                    conn.mostrarCliente();
+                } else {
+                    System.out.println("Essa opção não existe!");
+                }
+            
         }
 
     }
