@@ -1,10 +1,7 @@
 package app.Database;
-
 import java.sql.Connection;
-import java.sql.*;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 public class Querys {
     /**

@@ -6,8 +6,6 @@ import app.App;
 import app.Helpers.HMenus;
 
 public class Menus {
-    
-    
     public static void MenuPrincipal() {
         System.out.println( "\r ===================** CrudAsk **==================== \r\n");
 

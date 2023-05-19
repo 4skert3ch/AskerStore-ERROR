@@ -1,7 +1,8 @@
-package app;
+    package app;
+
 import java.util.Scanner;
+
 import app.Database.Connection.Conexao;
-import app.Helpers.HCliente;
 import app.Views.Menus;
 
 public class App {
@@ -12,7 +13,6 @@ public class App {
         Conexao conn = new Conexao();
 
         conn.main(arg);
-
         Scanner scan = new Scanner(System.in);
         int opcao = scan.nextInt();
 
