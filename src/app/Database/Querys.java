@@ -33,12 +33,10 @@ public class Querys {
         return stmt;
     }
 
-    public ArrayList<String> Consultas(Connection conn ) throws SQLException {
-       
+    public ArrayList<String> Consultas(Connection conn) throws SQLException {
         ArrayList<String> cliente = new ArrayList<String>();
-
         try {
-            PreparedStatement pstm = conn.prepareStatement("select id, nome, email, cpf, telefone, endereco, datadeNascimento from clientes;");
+            PreparedStatement pstm = conn.prepareStatement("select id, nome, email, cpf, telefone, endereco, datadeNascimento from clientes");
             ResultSet rs = null;
             rs = pstm.executeQuery();
             while (rs.next()) {

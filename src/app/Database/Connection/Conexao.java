@@ -6,11 +6,12 @@ import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.sql.*;
 
 import app.Views.Menus;
 import app.Database.Querys;
+import app.Helpers.HCliente;
 import app.Helpers.HMenus;
+import app.Helpers.HProduto;
 
 public class Conexao {
     public static Connection conexao = null;
@@ -50,10 +51,38 @@ public class Conexao {
         }
     }
 
+    public static void Exibir(int opcao, Class classe) throws SQLException {
+
+        String url = "jdbc:mysql://localhost:3306/askerdata";
+        String usuario = "root";
+        String senha = "";
+        conexao = DriverManager.getConnection(url, usuario, senha);
+
+        ArrayList<String> cliente = _querys.Consultas(conexao);
+        ArrayList<String> produto = _querys.Consultas(conexao);
+
+        HCliente hcliente = new HCliente();
+        HProduto hproduto = new HProduto();
+
+        if (opcao == 5 && classe == hcliente.getClass()) {
+            hcliente.printaSelect(cliente);
+            for (int i = 0; i < cliente.size(); i++) {
+                System.out.println(cliente.get(i));
+            }
+        }
+
+        if (opcao == 5 && classe == hcliente.getClass()) {
+            hproduto.printaSelect(produto);
+            for (int i = 0; i < cliente.size(); i++) {
+                System.out.println(cliente.get(i));
+            }
+        }
+    }
+
     public static Statement StatementsQuerys(Connection conn) throws SQLException, InterruptedException {
         Querys _querys = new Querys();
         HMenus hmenus = new HMenus();
-        Menus hmenu = new Menus();
+        Menus menu = new Menus();
         Statement stmt = conn.createStatement();
         try {
             int max = 22;
@@ -71,56 +100,4 @@ public class Conexao {
         }
         return stmt;
     }
-
-    public static void printaSelect(ArrayList<String> select){
-        int tamanho = ((select.size()) / 7);
-        System.out.println(tamanho);
-
-        for (int i = 0; i < select.size(); i++) {
-            
-        }
-    }
-
-    public static void mostrarCliente() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/askerdata";
-        String usuario = "root";
-        String senha = "";
-        conexao = DriverManager.getConnection(url, usuario, senha);
-        ArrayList<String> cliente = _querys.Consultas(conexao);
-
-
-        printaSelect(cliente);
-       /*  for (int i = 0; i < cliente.size(); i++) {
-            System.out.println(cliente.get(i));
-        }*/
-        
-
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public static String progressBar(int currentValue, int maxValue) {
-        int progressBarLength = 33; //
-        if (progressBarLength < 9 || progressBarLength % 2 == 0) {
-            throw new ArithmeticException("formattedPercent.length() = 9! + even number of chars (one for each side)");
-        }
-        int currentProgressBarIndex = (int) Math.ceil(((double) progressBarLength / maxValue) * currentValue);
-        String formattedPercent = String.format(" %5.1f %% ",
-                (100 * currentProgressBarIndex) / (double) progressBarLength);
-        int percentStartIndex = ((progressBarLength - formattedPercent.length()) / 2);
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int progressBarIndex = 0; progressBarIndex < progressBarLength; progressBarIndex++) {
-            if (progressBarIndex <= percentStartIndex - 1
-                    || progressBarIndex >= percentStartIndex + formattedPercent.length()) {
-                sb.append(currentProgressBarIndex <= progressBarIndex ? " " : "=");
-            } else if (progressBarIndex == percentStartIndex) {
-                sb.append(formattedPercent);
-            }
-        }
-        sb.append("]");
-        return sb.toString();
-    }
-
 }

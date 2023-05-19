@@ -15,30 +15,15 @@ public class Menus {
         System.out.println( "\r Utilize as numerações para usar as funcionalidades \r\n");
 
         String[] options = { "Clientes", "Produto"};
-        
-        
-       
+    
         int i = 0;
             for (String item : options) {
-                System.out.println("[" + (i+1) + "] " + item); 
+                System.out.println("[" + (i+1) + "]" + item); 
                 i++;
             }
-       
-    }
-
-
-    public static void MenuCliente(){
-        
-        String[] options = { "Adicionar", "Atualizar", "Deletar", "Consultar"};
-
-        int i = 0;
-        for (String item : options) {
-            System.out.println("[" + (i+1) + "] " + item); 
-            i++;
-        }
     }
     
-    public static void MenuClientes() throws Exception {
+    public static void MenuCliente() throws Exception {
         HMenus hmenus = new HMenus();
         Scanner scan = new Scanner(System.in);
         App app = new App();
@@ -51,15 +36,10 @@ public class Menus {
 
         String[] options = {" <- Voltar", "Cadastrar", "Atualizar", "Excluir", "Exibir"};
         
-        for (int i = 1; i <= 4; i++) {
-            for (String item : options) {
-                System.out.println("[" + i++ + "]" + item); 
-            }
-        }
-        String escolha = scan.next();
-        if (escolha != "1"){
-            hmenus.LimparConsole();
-            app.main(options);
+        int i = 0;
+        for (String item : options) {
+            System.out.println("[" + (i+1) + "] " + item); 
+            i++;
         }
     }
 
