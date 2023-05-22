@@ -61,14 +61,15 @@ public class Querys {
             PreparedStatement stmt = conn.prepareStatement(sql_insert_produtos);
 
             System.out.println("Insira o id do cliente:");
-            id_cliente = scan.nextInt();
+            id_cliente = Integer.parseInt(scan.nextLine());
             stmt.setInt(1, id_cliente);
 
             System.out.println("Insira o nome do produto (até 50 caracteres):");
-            nome = scan.next();
+            nome = scan.nextLine();
             stmt.setString(2, nome);
 
             System.out.println("Insira o preço do produto (até 11 caracteres):");
+            // preco = Double.parseDouble(scan.nextLine());
             preco = scan.nextDouble();
             stmt.setDouble(3, preco);
 
