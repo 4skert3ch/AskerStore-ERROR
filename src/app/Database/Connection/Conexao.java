@@ -71,7 +71,7 @@ public class Conexao {
             }
         }
 
-        if (opcao == 5 && classe == hcliente.getClass()) {
+        if (opcao == 5 && classe == hproduto.getClass()) {
             hproduto.printaSelect(produto);
             for (int i = 0; i < cliente.size(); i++) {
                 System.out.println(cliente.get(i));
