@@ -53,7 +53,6 @@ public class Querys {
             stmt.setString(2, nome);
 
             System.out.println("Insira o preço do produto (até 11 caracteres):");
-            // preco = Double.parseDouble(scan.nextLine());
             preco = scan.nextDouble();
             stmt.setDouble(3, preco);
 

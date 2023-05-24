@@ -1,7 +1,6 @@
     package app;
 
 import java.util.Scanner;
-
 import app.Database.Querys;
 import app.Database.Connection.Conexao;
 import app.Helpers.HCliente;
