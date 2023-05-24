@@ -17,15 +17,32 @@ public class Querys {
     public static Statement CriarTabelas(Connection conn) throws SQLException {
         Statement stmt = conn.createStatement();
 
-        String sql = "create table clientes("+
-            "id int primary key auto_increment,"+
-            "nome varchar(25) not null,"+
-            "email varchar(35),"+
-            "cpf varchar(11),"+
-            "telefone varchar(20),"+
-            "endereco varchar(20),"+
-            "DataDeNascimento date);";
-            stmt.executeUpdate(sql);    
+        String sqlClientes = "create table clientes(" +
+                "id int primary key auto_increment," +
+                "nome varchar(25) not null," +
+                "email varchar(35)," +
+                "cpf varchar(11)," +
+                "telefone varchar(20)," +
+                "endereco varchar(20)," +
+                "DataDeNascimento date);";
+        try {
+            stmt.executeUpdate(sqlClientes);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        String sqlProdutos = "create table produtos (" +
+                "id_produto int primary key auto_increment," +
+                "id_cliente int not null," +
+                "nome varchar(50) not null," +
+                "preco decimal(10, 2) not null default 0," +
+                "foreign key (id_cliente) references clientes(id));";
+        try {
+            stmt.executeUpdate(sqlProdutos);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
         return stmt;
     }
 

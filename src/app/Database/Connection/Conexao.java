@@ -78,13 +78,6 @@ public class Conexao {
                 System.out.println(cliente.get(i));
             }
         }
-
-        if (opcao == 5 && classe == hproduto.getClass()) {
-            hproduto.printaSelect(produto);
-            for (int i = 0; i < cliente.size(); i++) {
-                System.out.println(cliente.get(i));
-            }
-        }
     }
 
     public static Statement StatementsQuerys(Connection conn) throws SQLException, InterruptedException {
