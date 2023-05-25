@@ -1,5 +1,7 @@
 package app.Database;
+
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.xml.crypto.Data;
 
 public class Querys {
     /**
@@ -46,7 +50,7 @@ public class Querys {
         return stmt;
     }
 
-    public static boolean inserirProduto() {
+    public boolean inserirProduto() {
         String url = "jdbc:mysql://localhost:3306/askerdata";
         String usuario = "root";
         String senha = "";
@@ -75,6 +79,59 @@ public class Querys {
 
             stmt.executeUpdate();
             scan.close();
+            conn.close();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public boolean inserirCliente() {
+        String url = "jdbc:mysql://localhost:3306/askerdata";
+        String usuario = "root";
+        String senha = "";
+        String sql_insert_clientes = "insert into clientes (nome, email, cpf, telefone, endereco, DataDeNascimento) values (?, ?, ?, ?, ?, ?);";
+
+        String nome;
+        String email;
+        String cpf;
+        String telefone;
+        String endereco;
+        Date DataDeNascimento;
+
+        try {
+            Scanner scan2 = new Scanner(System.in);
+            Connection conn = DriverManager.getConnection(url, usuario, senha);
+            PreparedStatement stmt = conn.prepareStatement(sql_insert_clientes);
+
+            System.out.println("Caso não queira inserir um valor, digite null.");
+            System.out.println("Qual o nome do cliente? (obrigatório; máximo: 25 caracteres)");
+            nome = scan2.nextLine();
+            stmt.setString(1, nome);
+
+            System.out.println("Qual o email do cliente? (máximo: 35 caracteres)");
+            email = scan2.nextLine();
+            stmt.setString(2, email);
+
+            System.out.println("Qual o cpf do cliente? (máximo: 11 caracteres)");
+            cpf = scan2.nextLine();
+            stmt.setString(3, cpf);
+
+            System.out.println("Qual o telefone do cliente? (máximo: 20 caracteres)");
+            telefone = scan2.nextLine();
+            stmt.setString(4, telefone);
+
+            System.out.println("Qual o endereço do cliente? (máximo: 20 caracteres)");
+            endereco = scan2.nextLine();
+            stmt.setString(5, endereco);
+
+            System.out.println("Qual a data de nascimento do cliente?\nFormato: ano-mês-dia\nUse números!");
+            DataDeNascimento = Date.valueOf(scan2.nextLine());
+            stmt.setDate(6, DataDeNascimento);
+
+            stmt.executeUpdate();
+            scan2.close();
             conn.close();
             return true;
         } catch (Exception e) {
