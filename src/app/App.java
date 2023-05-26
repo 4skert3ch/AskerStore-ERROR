@@ -26,14 +26,20 @@ public class App {
             menu.MenuCliente();
             int crudCliente = scan.nextInt();
                 if (crudCliente == 1){
+                    // back
                 }else if (crudCliente == 2){
+                    // insert
                 }else if (crudCliente == 3){
+                    // update
                 }else if (crudCliente == 4){
+                    // delet
                 }else if (crudCliente == 5){
                     conn.Exibir(crudCliente, hcliente.getClass());
                 }else{
                     System.out.println("Essa opção não existe!");
                 }
+        } else if (opcao == 2){
+            
         }
 
     }
