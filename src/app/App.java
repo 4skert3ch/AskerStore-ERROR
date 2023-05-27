@@ -51,20 +51,5 @@ public class App {
             }
         }
 
-        if (opcao == 2) {
-            menu.MenuProduto();
-            int crudProduto = scan.nextInt();
-                if (crudProduto == 1){
-                }else if (crudProduto == 2){
-                    comandos.inserirProduto();
-                }else if (crudProduto == 3){
-                }else if (crudProduto == 4){
-                }else if (crudProduto == 5){
-                    conn.Exibir(crudProduto, hproduto.getClass());
-                }else{
-                    System.out.println("Essa opção não existe!");
-                }
-        }
-
     }
 }
