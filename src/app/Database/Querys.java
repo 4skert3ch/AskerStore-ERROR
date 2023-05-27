@@ -10,8 +10,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.xml.crypto.Data;
-
 public class Querys {
     /**
      * @param conn
