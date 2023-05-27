@@ -1,4 +1,5 @@
 package app.Database;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -8,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.xml.crypto.Data;
 
 public class Querys {
     /**
@@ -47,7 +50,7 @@ public class Querys {
         return stmt;
     }
 
-    public static boolean inserirProduto() {
+    public boolean inserirProduto() {
         String url = "jdbc:mysql://localhost:3306/askerdata";
         String usuario = "root";
         String senha = "";
