@@ -50,10 +50,7 @@ public class Querys {
         return stmt;
     }
 
-    public boolean inserirProduto() {
-        String url = "jdbc:mysql://localhost:3306/askerdata";
-        String usuario = "root";
-        String senha = "";
+    public boolean inserirProduto(String url, String usuario, String senha) {
         String sql_insert_produtos = "insert into produtos (id_cliente, nome, preco) values (?, ?, ?);";
 
         int id_cliente;
@@ -87,10 +84,7 @@ public class Querys {
         }
     }
 
-    public boolean inserirCliente() {
-        String url = "jdbc:mysql://localhost:3306/askerdata";
-        String usuario = "root";
-        String senha = "";
+    public boolean inserirCliente(String url, String usuario, String senha) {
         String sql_insert_clientes = "insert into clientes (nome, email, cpf, telefone, endereco, DataDeNascimento) values (?, ?, ?, ?, ?, ?);";
 
         String nome;
