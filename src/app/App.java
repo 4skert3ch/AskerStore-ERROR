@@ -23,6 +23,7 @@ public class App {
         Conexao conn = new Conexao();
 
         conn.main(arg);
+
         Scanner scan = new Scanner(System.in);
         int opcao = scan.nextInt();
 

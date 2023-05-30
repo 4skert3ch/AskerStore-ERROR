@@ -13,7 +13,6 @@ import app.Helpers.HCliente;
 import app.Helpers.HMenus;
 import app.Helpers.HProduto;
 
-
 public class Conexao {
     public static Connection conexao = null;
     public static Querys _querys = null;
@@ -59,8 +58,8 @@ public class Conexao {
         String senha = "";
         conexao = DriverManager.getConnection(url, usuario, senha);
 
-        ArrayList<String> cliente = _querys.Consultas(conexao);
-        ArrayList<String> produto = _querys.Consultas(conexao);
+        ArrayList<String> cliente = _querys.Consultas(conexao, "clientes");
+        ArrayList<String> produto = _querys.Consultas(conexao, "produtos");
 
         HCliente hcliente = new HCliente();
         HProduto hproduto = new HProduto();
@@ -74,8 +73,8 @@ public class Conexao {
 
         if (opcao == 5 && classe == hproduto.getClass()) {
             hproduto.printaSelect(produto);
-            for (int i = 0; i < cliente.size(); i++) {
-                System.out.println(cliente.get(i));
+            for (int i = 0; i < produto.size(); i++) {
+                System.out.println(produto.get(i));
             }
         }
     }
