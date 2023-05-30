@@ -134,26 +134,73 @@ public class Querys {
         }
     }
 
-    public ArrayList<String> Consultas(Connection conn) throws SQLException {
-        ArrayList<String> cliente = new ArrayList<String>();
-        try {
-            PreparedStatement pstm = conn.prepareStatement(
-                    "select id, nome, email, cpf, telefone, endereco, datadeNascimento from clientes");
-            ResultSet rs = null;
-            rs = pstm.executeQuery();
-            while (rs.next()) {
-                cliente.add(rs.getString("id"));
-                cliente.add(rs.getString("nome"));
-                cliente.add(rs.getString("email"));
-                cliente.add(rs.getString("cpf"));
-                cliente.add(rs.getString("telefone"));
-                cliente.add(rs.getString("endereco"));
-                cliente.add(rs.getString("datadeNascimento"));
-            }
-        } catch (Exception e) {
-            System.out.println(e + "| erro select cliente");
-        }
+    public ArrayList<String> Consultas(Connection conn, String tabela) throws SQLException {
 
-        return cliente;
+        if (tabela == "clientes") {
+            ArrayList<String> cliente = new ArrayList<String>();
+            try {
+                PreparedStatement pstm = conn.prepareStatement(
+                        "select id, nome, email, cpf, telefone, endereco, datadeNascimento from clientes");
+                ResultSet rs = null;
+                rs = pstm.executeQuery();
+                while (rs.next()) {
+                    cliente.add(rs.getString("id"));
+                    cliente.add(rs.getString("nome"));
+                    cliente.add(rs.getString("email"));
+                    cliente.add(rs.getString("cpf"));
+                    cliente.add(rs.getString("telefone"));
+                    cliente.add(rs.getString("endereco"));
+                    cliente.add(rs.getString("datadeNascimento"));
+                }
+            } catch (Exception e) {
+                System.out.println(e + "| erro select cliente");
+            }
+
+            return cliente;
+        } else if (tabela == "produtos") {
+            ArrayList<String> produto = new ArrayList<String>();
+            try {
+                PreparedStatement pstm = conn.prepareStatement(
+                        "select id_produto, id_cliente, nome, preco from produtos");
+                ResultSet rs = null;
+                rs = pstm.executeQuery();
+                while (rs.next()) {
+                    produto.add(rs.getString("id_produto"));
+                    produto.add(rs.getString("id_cliente"));
+                    produto.add(rs.getString("nome"));
+                    produto.add(rs.getString("preco"));
+                }
+            } catch (Exception e) {
+                System.out.println(e + "| erro select produto");
+            }
+
+            return produto;
+        } else {
+            System.out.println("Essa tabela não existe.");
+            ArrayList<String> desconhecido = new ArrayList<String>();
+            return desconhecido;
+        }
+    }
+
+    public int obterQuantidadeDeColunas(String tabela) {
+        String sql_url = "jdbc:mysql://localhost:3306/askerdata";
+        String sql_usuario = "root";
+        String sql_senha = "";
+        int quantidadeDeColunas = 0;
+        try {
+            String sql_contador_colunas = "SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '"
+                    + tabela + "';";
+            Connection conn = DriverManager.getConnection(sql_url, sql_usuario, sql_senha);
+            Statement stmt = conn.createStatement();
+            ResultSet resultado = stmt.executeQuery(sql_contador_colunas);
+
+            if (resultado.next()) {
+                quantidadeDeColunas = resultado.getInt(1);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return quantidadeDeColunas;
     }
 }
