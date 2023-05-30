@@ -10,6 +10,10 @@ import app.Views.Menus;
 public class App {
     public static void main(String[] arg) throws Exception {
 
+        String url = "jdbc:mysql://localhost:3306/askerdata";
+        String usuario = "root";
+        String senha = "";
+
         Querys comandos = new Querys();
 
         HCliente hcliente = new HCliente();
@@ -27,7 +31,7 @@ public class App {
             int crudCliente = scan.nextInt();
             if (crudCliente == 1) {
             } else if (crudCliente == 2) {
-                comandos.inserirCliente();
+                comandos.inserirCliente(url, usuario, senha);
             } else if (crudCliente == 3) {
             } else if (crudCliente == 4) {
             } else if (crudCliente == 5) {
@@ -41,7 +45,7 @@ public class App {
             int crudProduto = scan.nextInt();
             if (crudProduto == 1) {
             } else if (crudProduto == 2) {
-                comandos.inserirProduto();
+                comandos.inserirProduto(url, usuario, senha);
             } else if (crudProduto == 3) {
             } else if (crudProduto == 4) {
             } else if (crudProduto == 5) {
