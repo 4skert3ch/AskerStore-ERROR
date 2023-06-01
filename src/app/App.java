@@ -32,7 +32,7 @@ public class App {
             } else if (crudCliente == 3) {
                 // update
             } else if (crudCliente == 4) {
-                // delet
+                comandos.deletCliente();
             } else if (crudCliente == 5) {
                 conn.Exibir(crudCliente, hcliente.getClass());
             } else {
