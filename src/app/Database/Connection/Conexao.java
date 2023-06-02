@@ -81,10 +81,10 @@ public class Conexao {
     }
 
     public static Statement StatementsQuerys(Connection conn) throws SQLException, InterruptedException {
+        Statement stmt = conn.createStatement();
         Querys _querys = new Querys();
         HMenus hmenus = new HMenus();
         Menus menu = new Menus();
-        Statement stmt = conn.createStatement();
         int max = 22;
         try {
             _querys.CriarTabelas(conn);

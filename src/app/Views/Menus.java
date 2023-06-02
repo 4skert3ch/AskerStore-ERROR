@@ -6,6 +6,7 @@ import app.App;
 import app.Helpers.HMenus;
 
 public class Menus {
+    
     public static void MenuPrincipal() {
 
         System.out.println("\r ===================** CrudAsk **==================== \r\n");
@@ -57,6 +58,15 @@ public class Menus {
             System.out.println("[" + (i + 1) + "] " + item);
             i++;
         }
+    }
+
+    public static void IrParaPrincipal() throws Exception {
+        HMenus hmenus = new HMenus();
+
+        hmenus.LimparConsole();
+        System.out.println("\r ===================** PRECIONE [V] PARA VOLTAR **==================== \r\n");
+        MenuPrincipal();
+        
     }
 
 }
