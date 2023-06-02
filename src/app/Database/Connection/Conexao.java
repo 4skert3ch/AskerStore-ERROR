@@ -12,7 +12,6 @@ import app.Database.Querys;
 import app.Helpers.HMenus;
 import app.Helpers.Utilidades;
 
-
 public class Conexao {
     public static Connection conexao = null;
     public static Querys _querys = null;
@@ -61,13 +60,7 @@ public class Conexao {
     }
 
     public static Statement StatementsQuerys(Connection conn) throws SQLException, InterruptedException {
-        Statement stmt = conn.createStatement();
-        Querys _querys = new Querys();
-        HMenus hmenus = new HMenus();
-        Menus menu = new Menus();
-        int max = 22;
-        try {
-            _querys.CriarTabelas(conn);
+
             System.out.println("Criando tabelas do sistema...");
             for (int i = 0; i <= max; i++) {
                 Thread.sleep(100);
@@ -76,12 +69,7 @@ public class Conexao {
             Menus.MenuPrincipal();
             System.out.println("\nSucesso tabelas criadas");
         } catch (SQLSyntaxErrorException e) {
-            for (int i = 0; i <= max; i++) {
-                Thread.sleep(10);
-                System.out.print(String.format("\r%s", hmenus.progressBar(i, max)));
-            }
-            menu.MenuPrincipal();
-            System.out.println("\n - Tabelas [OK]");
+
         }
         return stmt;
     }

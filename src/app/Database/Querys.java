@@ -2,7 +2,6 @@ package app.Database;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,10 +42,7 @@ public class Querys {
         return stmt;
     }
 
-    public void inserirCliente() {
-        String url = "jdbc:mysql://localhost:3306/askerdata";
-        String usuario = "root";
-        String senha = "";
+
         String sql_insert_clientes = "insert into clientes (nome, email, cpf, telefone, endereco, DataDeNascimento) values (?, ?, ?, ?, ?, ?);";
 
         String nome;
@@ -58,7 +54,6 @@ public class Querys {
 
         try {
             Scanner scan2 = new Scanner(System.in);
-            Connection conn = DriverManager.getConnection(url, usuario, senha);
             PreparedStatement stmt = conn.prepareStatement(sql_insert_clientes);
 
             System.out.println("Caso não queira inserir um valor, digite null.");
@@ -184,4 +179,4 @@ public class Querys {
         sqlmgr.executeUpdate(sql_delete_cliente);
     }
 
-}
+
