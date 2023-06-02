@@ -2,8 +2,6 @@ package app.Class;
 
 import java.sql.Date;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-
 public class Cliente {
 
     int Id;
@@ -79,7 +77,6 @@ public class Cliente {
 
     public void setDataDeNascimento(Date dataDeNascimento) {
         DataDeNascimento = dataDeNascimento;
-    } 
+    }
 
-    
 }
