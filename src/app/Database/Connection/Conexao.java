@@ -9,9 +9,8 @@ import java.util.ArrayList;
 
 import app.Views.Menus;
 import app.Database.Querys;
-import app.Helpers.HCliente;
 import app.Helpers.HMenus;
-import app.Helpers.HProduto;
+import app.Helpers.Utilidades;
 
 
 public class Conexao {
@@ -52,49 +51,30 @@ public class Conexao {
         }
     }
 
-    public static void Exibir(int opcao, Class classe) throws SQLException {
+    public static void Exibir(Connection conn, String tabela) throws SQLException {
 
-        String url = "jdbc:mysql://localhost:3306/askerdata";
-        String usuario = "root";
-        String senha = "";
-        conexao = DriverManager.getConnection(url, usuario, senha);
-
-        ArrayList<String> cliente = _querys.Consultas(conexao);
-        ArrayList<String> produto = _querys.Consultas(conexao);
-
-        HCliente hcliente = new HCliente();
-        HProduto hproduto = new HProduto();
-
-        if (opcao == 5 && classe == hcliente.getClass()) {
-            hcliente.printaSelect(cliente);
-        }
-
-        if (opcao == 5 && classe == hproduto.getClass()) {
-            hproduto.printaSelect(produto);
-            for (int i = 0; i < cliente.size(); i++) {
-                System.out.println(cliente.get(i));
-            }
+        ArrayList<String> resultado = _querys.Consultas(conn, tabela);
+        Utilidades.printaSelect(resultado, tabela);
+        for (int i = 0; i < resultado.size(); i++) {
+            System.out.println(resultado.get(i));
         }
     }
 
     public static Statement StatementsQuerys(Connection conn) throws SQLException, InterruptedException {
-        Querys _querys = new Querys();
-        HMenus hmenus = new HMenus();
-        Menus menu = new Menus();
         Statement stmt = conn.createStatement();
         try {
             int max = 22;
-            _querys.CriarTabelas(conn);
+            Querys.CriarTabelas(conn);
             System.out.println("Criando tabelas do sistema...");
             for (int i = 0; i <= max; i++) {
                 Thread.sleep(100);
-                System.out.print(String.format("\r%s", hmenus.progressBar(i, max)));
+                System.out.print(String.format("\r%s", HMenus.progressBar(i, max)));
             }
-            menu.MenuPrincipal();
+            Menus.MenuPrincipal();
             System.out.println("\nSucesso tabelas criadas");
         } catch (SQLSyntaxErrorException e) {
             System.out.println(" - Tabelas [OK]");
-            menu.MenuPrincipal();
+            Menus.MenuPrincipal();
         }
         return stmt;
     }
