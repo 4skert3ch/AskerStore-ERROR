@@ -85,8 +85,8 @@ public class Conexao {
         HMenus hmenus = new HMenus();
         Menus menu = new Menus();
         Statement stmt = conn.createStatement();
+        int max = 22;
         try {
-            int max = 22;
             _querys.CriarTabelas(conn);
             System.out.println("Criando tabelas do sistema...");
             for (int i = 0; i <= max; i++) {
@@ -96,8 +96,12 @@ public class Conexao {
             menu.MenuPrincipal();
             System.out.println("\nSucesso tabelas criadas");
         } catch (SQLSyntaxErrorException e) {
-            System.out.println(" - Tabelas [OK]");
+            for (int i = 0; i <= max; i++) {
+                Thread.sleep(10);
+                System.out.print(String.format("\r%s", hmenus.progressBar(i, max)));
+            }
             menu.MenuPrincipal();
+            System.out.println("\n - Tabelas [OK]");
         }
         return stmt;
     }

@@ -18,8 +18,9 @@ public class Querys {
      */
     public static Statement CriarTabelas(Connection conn) throws SQLException {
         Statement stmt = conn.createStatement();
-
-        String sqlClientes = "create table clientes(" +
+        String sql;
+    
+            sql = "create table clientes(" +
                 "id int primary key auto_increment," +
                 "nome varchar(25) not null," +
                 "email varchar(35)," +
@@ -27,23 +28,15 @@ public class Querys {
                 "telefone varchar(20)," +
                 "endereco varchar(20)," +
                 "DataDeNascimento date);";
-        try {
-            stmt.executeUpdate(sqlClientes);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+            stmt.executeUpdate(sql);
 
-        String sqlProdutos = "create table produtos (" +
-                "id_produto int primary key auto_increment," +
-                "id_cliente int not null," +
-                "nome varchar(50) not null," +
-                "preco decimal(10, 2) not null default 0," +
-                "foreign key (id_cliente) references clientes(id));";
-        try {
-            stmt.executeUpdate(sqlProdutos);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+            sql = "create table produtos (" +
+                 "id_produto int primary key auto_increment," +
+                 "id_cliente int not null," +
+                 "nome varchar(50) not null," +
+                 "preco decimal(10, 2) not null default 0," +
+                 "foreign key (id_cliente) references clientes(id));";
+            stmt.executeUpdate(sql);
 
         return stmt;
     }
