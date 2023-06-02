@@ -12,6 +12,9 @@ import java.util.Scanner;
 
 import javax.xml.crypto.Data;
 
+import app.Database.Connection.Conexao;
+import app.Helpers.HCliente;
+
 public class Querys {
     /**
      * @param conn
@@ -156,4 +159,28 @@ public class Querys {
 
         return cliente;
     }
+
+    public static void deletCliente() throws SQLException{
+
+
+        String url = "jdbc:mysql://localhost:3306/askerdata";
+        String usuario = "root";
+        String senha = "";
+        Statement sqlmgr = null;
+        Scanner entrada = new Scanner(System.in);
+        HCliente hcliente = new HCliente();
+        Conexao conn = new Conexao();
+
+        conn.Exibir(5, hcliente.getClass());
+         
+        System.out.println("Id do cliente");
+        int id = entrada.nextInt();
+
+        String sql_delete_cliente = "delete from clientes where id = "+id;
+
+        Connection conn2 = DriverManager.getConnection(url, usuario, senha);
+        sqlmgr = conn2.createStatement();
+        sqlmgr.executeUpdate(sql_delete_cliente);
+    }
+
 }
