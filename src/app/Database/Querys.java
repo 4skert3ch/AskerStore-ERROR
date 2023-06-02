@@ -85,6 +85,57 @@ public class Querys {
         }
     }
 
+    public boolean atualizarProduto(Connection conn) {
+        String sql_select_produtos = "select COUNT(*) as Count from produtos where id_produto = ?";
+        String sql_update_produtos = "update produtos set id_cliente = ?, nome = ?, preco = ? where id_produto = ?";
+
+        int id_produto;
+        int id_cliente;
+        String nome;
+        double preco;
+
+        try {
+            Scanner scan = new Scanner(System.in);
+            PreparedStatement stmt = conn.prepareStatement(sql_select_produtos);
+
+            System.out.println("Insira o id do produto:");
+            id_produto = Integer.parseInt(scan.nextLine());
+            stmt.setInt(1, id_produto);
+            ResultSet rs = null;
+
+            rs = stmt.executeQuery();
+            while (rs.next()){
+                if (rs.getInt("Count") == 0){
+                    System.out.println("Produto inválido");
+                    return false;
+                }    
+            }
+
+            stmt = conn.prepareStatement(sql_update_produtos);
+            stmt.setInt(4, id_produto);
+
+            System.out.println("Insira o novo id de cliente:");
+            id_cliente = Integer.parseInt(scan.nextLine());
+            stmt.setInt(1, id_cliente);
+
+            System.out.println("Insira o novo nome do produto (até 50 caracteres):");
+            nome = scan.nextLine();
+            stmt.setString(2, nome);
+
+            System.out.println("Insira o novo preço do produto (até 11 caracteres):");
+            preco = scan.nextDouble();
+            stmt.setDouble(3, preco);
+
+            stmt.executeUpdate();
+            scan.close();
+            conn.close();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+
     public boolean inserirCliente() {
         String url = "jdbc:mysql://localhost:3306/askerdata";
         String usuario = "root";
