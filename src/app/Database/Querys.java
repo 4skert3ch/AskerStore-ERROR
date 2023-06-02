@@ -2,15 +2,12 @@ package app.Database;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.xml.crypto.Data;
 
 public class Querys {
     /**
@@ -50,7 +47,7 @@ public class Querys {
         return stmt;
     }
 
-    public boolean inserirProduto(String url, String usuario, String senha) {
+    public boolean inserirProduto(Connection conn) {
         String sql_insert_produtos = "insert into produtos (id_cliente, nome, preco) values (?, ?, ?);";
 
         int id_cliente;
@@ -59,7 +56,6 @@ public class Querys {
 
         try {
             Scanner scan = new Scanner(System.in);
-            Connection conn = DriverManager.getConnection(url, usuario, senha);
             PreparedStatement stmt = conn.prepareStatement(sql_insert_produtos);
 
             System.out.println("Insira o id do cliente:");
@@ -84,7 +80,7 @@ public class Querys {
         }
     }
 
-    public boolean inserirCliente(String url, String usuario, String senha) {
+    public boolean inserirCliente(Connection conn) {
         String sql_insert_clientes = "insert into clientes (nome, email, cpf, telefone, endereco, DataDeNascimento) values (?, ?, ?, ?, ?, ?);";
 
         String nome;
@@ -96,7 +92,6 @@ public class Querys {
 
         try {
             Scanner scan2 = new Scanner(System.in);
-            Connection conn = DriverManager.getConnection(url, usuario, senha);
             PreparedStatement stmt = conn.prepareStatement(sql_insert_clientes);
 
             System.out.println("Caso não queira inserir um valor, digite null.");
@@ -182,15 +177,11 @@ public class Querys {
         }
     }
 
-    public int obterQuantidadeDeColunas(String tabela) {
-        String sql_url = "jdbc:mysql://localhost:3306/askerdata";
-        String sql_usuario = "root";
-        String sql_senha = "";
+    public int obterQuantidadeDeColunas(Connection conn, String tabela) {
         int quantidadeDeColunas = 0;
         try {
             String sql_contador_colunas = "SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '"
                     + tabela + "';";
-            Connection conn = DriverManager.getConnection(sql_url, sql_usuario, sql_senha);
             Statement stmt = conn.createStatement();
             ResultSet resultado = stmt.executeQuery(sql_contador_colunas);
 

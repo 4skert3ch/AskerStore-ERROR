@@ -1,7 +1,7 @@
 package app.Helpers;
 
 public class HMenus {
-    public static void LimparConsole(){
+    public static void LimparConsole() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();

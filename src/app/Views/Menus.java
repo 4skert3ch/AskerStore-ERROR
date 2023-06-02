@@ -1,8 +1,6 @@
 package app.Views;
 
 import java.util.Scanner;
-
-import app.App;
 import app.Helpers.HMenus;
 
 public class Menus {
@@ -20,11 +18,9 @@ public class Menus {
     }
 
     public static void MenuCliente() throws Exception {
-        HMenus hmenus = new HMenus();
-        Scanner scan = new Scanner(System.in);
-        App app = new App();
+        // Scanner scan = new Scanner(System.in);
 
-        hmenus.LimparConsole();
+        HMenus.LimparConsole();
         System.out.println("\r ===================** Menu Clientes **==================== \r\n");
 
         System.out.println("\r ( SQUAD : A Computaria | COMPANHIA : ÁskerTech ) \r");
@@ -37,14 +33,13 @@ public class Menus {
             System.out.println("[" + (i + 1) + "] " + item);
             i++;
         }
+        // scan.close();
     }
 
     public static void MenuProduto() throws Exception {
-        HMenus hmenus = new HMenus();
         Scanner scan = new Scanner(System.in);
-        App app = new App();
 
-        hmenus.LimparConsole();
+        HMenus.LimparConsole();
         System.out.println("\r ===================** Menu Produto **==================== \r\n");
 
         System.out.println("\r ( SQUAD : A Computaria | COMPANHIA : ÁskerTech ) \r");
@@ -57,6 +52,7 @@ public class Menus {
             System.out.println("[" + (i + 1) + "] " + item);
             i++;
         }
+        scan.close();
     }
 
 }
