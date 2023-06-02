@@ -26,24 +26,29 @@ public class App {
             menu.MenuCliente();
             int crudCliente = scan.nextInt();
             if (crudCliente == 1) {
+                // back
             } else if (crudCliente == 2) {
-                comandos.inserirCliente();
+                // insert
             } else if (crudCliente == 3) {
+                // update
             } else if (crudCliente == 4) {
+                comandos.deletCliente();
             } else if (crudCliente == 5) {
                 conn.Exibir(crudCliente, hcliente.getClass());
             } else {
                 System.out.println("Essa opção não existe!");
             }
-        }
-        if (opcao == 2) {
+        } else if (opcao == 2) {
             menu.MenuProduto();
             int crudProduto = scan.nextInt();
             if (crudProduto == 1) {
+                // back
             } else if (crudProduto == 2) {
                 comandos.inserirProduto();
             } else if (crudProduto == 3) {
+                // update
             } else if (crudProduto == 4) {
+                // delet
             } else if (crudProduto == 5) {
                 conn.Exibir(crudProduto, hproduto.getClass());
             } else {
