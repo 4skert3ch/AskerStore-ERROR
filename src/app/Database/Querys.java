@@ -11,9 +11,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import app.App;
-import app.Database.Connection.Conexao;
+
 import app.Helpers.HMenus;
-import app.Views.Menus;
 
 public class Querys {
     HMenus hmenus = new HMenus();
